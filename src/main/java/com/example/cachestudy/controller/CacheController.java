@@ -6,7 +6,10 @@ import com.example.cachestudy.service.TimeApiResponse;
 import com.example.cachestudy.service.TimeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.CacheManager;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
@@ -15,6 +18,19 @@ public class CacheController {
 
     private final TimeService timeService;
     private final PostService postService;
+    private final CacheManager cacheManager;
+
+    @GetMapping("/cash-manager")
+    public Map<String, Object> getCacheManage() {
+        System.out.println("cacheManager = " + cacheManager.getCache("post"));
+        Map<String, Object> myMap = Map.of(
+                "class", cacheManager.getClass(),
+                "object", cacheManager.toString(),
+                "getCacheNames", cacheManager.getCacheNames()
+        );
+        System.out.println("myMap = " + myMap);
+        return myMap;
+    }
 
 
     @GetMapping("/current-time")

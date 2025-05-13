@@ -32,6 +32,10 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     runtimeOnly("com.h2database:h2")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+
+//    implementation("org.springframework.boot:spring-boot-starter-cache")
+//    implementation("com.github.ben-manes.caffeine:caffeine")
 }
 
 tasks.withType<Test> {
